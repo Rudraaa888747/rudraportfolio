@@ -108,7 +108,7 @@ export default function Navbar() {
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.5, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                href="/RUDRA_RESUME.pdf"
+                href="/Rudra Chokshi Resume.pdf"
                 target="_blank"
                 className="mt-8 font-mono text-xs text-[#888] tracking-[0.3em] uppercase border-b border-[#333] pb-2 hover:text-white transition-colors inline-block mx-auto"
               >
