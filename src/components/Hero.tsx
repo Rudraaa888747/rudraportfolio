@@ -44,8 +44,11 @@ export default function Hero() {
     <section ref={container} className="relative h-screen w-full flex items-center justify-center overflow-hidden">
       <Hero3D />
       
+      {/* Mobile Cinematic Atmosphere */}
+      <div className="absolute inset-0 z-0 pointer-events-none md:hidden bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-cyan-900/10 via-black/40 to-black/80" />
+
       {/* System Metrics Overlay */}
-      <div className="absolute top-8 left-8 z-20 flex flex-col gap-2 font-mono text-[10px] text-white/40 tracking-widest uppercase pointer-events-none">
+      <div className="absolute top-8 left-6 md:left-8 z-20 flex flex-col gap-1 md:gap-2 font-mono text-[8px] md:text-[10px] text-white/40 tracking-widest uppercase pointer-events-none">
         <div>SYS.MEM // {metrics.mem} TB</div>
         <div>NET.LAT // {metrics.latency} MS</div>
         <div>ORIGIN // AHMEDABAD, IN</div>
@@ -69,7 +72,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.5, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display text-5xl md:text-[8vw] leading-[1] tracking-tight text-white font-medium"
+          className="font-display text-6xl md:text-[8vw] leading-[1.1] md:leading-[1] tracking-tight text-white font-medium"
         >
           Rudra Chokshi
         </motion.h1>
@@ -78,7 +81,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-6 font-sans text-sm md:text-lg text-[#909090] max-w-lg tracking-wide font-light"
+          className="mt-4 md:mt-6 font-sans text-xs md:text-lg text-[#909090] max-w-lg tracking-wide font-light"
         >
           Designing and engineering living digital systems.
         </motion.p>
