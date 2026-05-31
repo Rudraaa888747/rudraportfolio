@@ -137,7 +137,7 @@ export default function Architecture() {
         {/* Engineered Copy */}
         <div className="flex flex-col gap-6 max-w-2xl mb-32">
           <h3 className="font-mono text-xs tracking-[0.3em] text-[#555] uppercase">
-            // System Architecture
+            // Core Skills & Architecture
           </h3>
           <h2 className="font-display text-3xl md:text-5xl font-light tracking-tight text-[#e0e0e0] leading-[1.1]">
             Every intelligent system begins with architecture.

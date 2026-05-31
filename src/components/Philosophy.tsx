@@ -17,7 +17,7 @@ const TERMINAL_LINES = [
     type: "interactive",
     label: "STATUS",
     value: "MSc IT @ GLS University | 2023 — 2028",
-    details: "Currently pursuing a Master of Science in Information Technology. Focusing on advanced software engineering principles, scalable data architectures, and AI integration."
+    details: "Completed my Bachelor's degree and currently pursuing a Master of Science in Information Technology. Focusing on advanced software engineering principles, scalable data architectures, and AI integration."
   },
   {
     type: "interactive",

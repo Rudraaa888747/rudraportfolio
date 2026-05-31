@@ -52,8 +52,8 @@ export default function Hero() {
         <div>SYS.MEM // {metrics.mem} TB</div>
         <div>NET.LAT // {metrics.latency} MS</div>
         <div>ORIGIN // AHMEDABAD, IN</div>
-        <div>EDU.STAT // MSC IT ACTIVE [23-28]</div>
-        <div>CORE // ONLINE</div>
+        <div>EDU.STAT // BACHELORS COMPLETED</div>
+        <div>EDU.STAT // MSC IT [ACTIVE]</div>
       </div>
 
       <div ref={textRef} className="relative z-10 flex flex-col items-center justify-center text-center px-4 w-full mix-blend-difference">

@@ -31,6 +31,17 @@ const PROJECTS = [
     number: "02",
     type: "travel",
     githubLink: "https://github.com/Rudraaa888747/travelguide"
+  },
+  {
+    title: "AZURE SMILES",
+    subtitle: "AI-Powered Dental ERP Platform",
+    problem: "Disconnected systems for appointments, records, and billing created inefficiencies and poor patient experience in dental clinics.",
+    solution: "Developed a full-stack ecosystem combining a luxury patient website with a real-time clinic ERP platform for centralized management.",
+    tech: ["React 19", "Node.js", "MongoDB", "ERP Design"],
+    number: "03",
+    type: "dental",
+    liveLink: "https://dental-clinic-liard-seven.vercel.app",
+    githubLink: "https://github.com/Rudraaa888747/Dental-Clinic"
   }
 ];
 
@@ -48,31 +59,43 @@ export default function Projects() {
       const panels = gsap.utils.toArray(".project-panel");
       const totalPanels = panels.length;
       
-      gsap.to(panels, {
-        xPercent: -100 * (totalPanels - 1),
-        ease: "none",
+      const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
           pin: true,
-          scrub: 2,
+          scrub: 1.5,
           end: () => `+=${(sectionRef.current?.offsetWidth || 1000) * 2.5}`
         }
       });
+
+      // Smooth cinematic entry: pause, scroll, pause
+      tl.to({}, { duration: 0.2 })
+        .to(panels, {
+          xPercent: -100 * (totalPanels - 1),
+          ease: "none",
+          duration: 1
+        })
+        .to({}, { duration: 0.2 });
     });
 
     return () => mm.revert();
   }, { scope: sectionRef });
 
   return (
-    <section ref={sectionRef} id="work" className="relative z-20 bg-black overflow-hidden md:h-screen">
-      <div className="absolute top-8 left-6 md:left-12 z-50 mix-blend-difference pointer-events-none">
-        <h2 className="font-sans text-xs uppercase tracking-[0.3em] text-[#888]">Classified Systems</h2>
-      </div>
+    <section id="work" className="relative z-20 bg-black w-full border-t border-white/[0.05]">
+      {/* Spacer to ensure smooth transition from previous section before pinning */}
+      <div className="w-full h-24 md:h-40 bg-black relative z-20"></div>
 
-      <div ref={containerRef} className="flex flex-col md:flex-row h-auto md:h-full w-full md:w-[200vw]">
+      <div ref={sectionRef} className="relative overflow-hidden md:h-screen w-full bg-black">
+        <div className="absolute top-8 left-6 md:left-12 z-50 mix-blend-difference pointer-events-none">
+          <h2 className="font-sans text-xs uppercase tracking-[0.3em] text-[#888]">Classified Systems</h2>
+        </div>
+
+        <div ref={containerRef} className="flex flex-col md:flex-row h-auto md:h-full w-full md:w-[200vw]">
         {PROJECTS.map((project, i) => (
           <ProjectCard key={i} project={project} index={i} />
         ))}
+        </div>
       </div>
     </section>
   );
@@ -130,13 +153,15 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[0], index: n
       <div className="absolute inset-0 lg:left-auto lg:right-0 w-full lg:w-1/2 h-full z-0 pointer-events-none flex items-start lg:items-center justify-center overflow-hidden hover-target-scan pt-32 lg:pt-0 opacity-40 lg:opacity-100">
         {project.type === "switch" ? (
           <SwitchEnvironment />
-        ) : (
+        ) : project.type === "travel" ? (
           <TravelEnvironment />
+        ) : (
+          <DentalEnvironment />
         )}
       </div>
 
       <div className="relative z-10 w-full max-w-7xl px-6 md:px-12 flex flex-col justify-end lg:justify-center h-full pb-20 lg:pb-0 pointer-events-none">
-        <div className="max-w-2xl bg-gradient-to-t from-black via-black/95 to-transparent lg:bg-none pt-40 p-6 lg:p-0 rounded-lg pointer-events-auto mt-auto lg:mt-0 relative">
+        <div className="w-full lg:w-[45%] bg-gradient-to-t from-black via-black/95 to-transparent lg:bg-none pt-40 p-6 lg:p-0 rounded-lg pointer-events-auto mt-auto lg:mt-0 relative">
           <div className="font-mono text-[#555] mb-4 md:mb-6 text-[10px] md:text-sm tracking-widest">SYS_ID: {project.number}</div>
           
           <h3 className="font-display text-5xl md:text-6xl font-medium tracking-tight mb-2 md:mb-4 text-[#e0e0e0]">
@@ -383,6 +408,62 @@ function TravelEnvironment() {
           alt="TRAVEL GUIDE Platform" 
           fill 
           className="object-contain object-right"
+        />
+      </div>
+    </div>
+  );
+}
+
+function DentalEnvironment() {
+  return (
+    <div className="relative w-full h-full flex items-center justify-center lg:justify-end p-8 md:p-12 lg:pr-24">
+      {/* Luxury Ambient Lighting for Dental Environment */}
+      <div className="absolute right-[20%] top-[30%] w-[400px] h-[400px] bg-blue-600/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute right-[10%] bottom-[40%] w-[300px] h-[300px] bg-cyan-500/10 blur-[100px] rounded-full pointer-events-none" />
+      
+      {/* 3D Digital Blue Scanning System */}
+      <div className="absolute inset-0 z-20 opacity-40 mix-blend-screen overflow-hidden pointer-events-none">
+        {/* Vertical Scan Radar */}
+        <motion.div 
+          className="w-full h-32 bg-gradient-to-b from-transparent via-blue-500/10 to-blue-400/20 border-b border-blue-400/50 absolute left-0 top-0 shadow-[0_4px_30px_rgba(59,130,246,0.15)]"
+          animate={{ y: ["-20vh", "120vh"] }}
+          transition={{ duration: 6, ease: "linear", repeat: Infinity }}
+        />
+        
+        {/* Dental Diagnostics Reticle */}
+        <motion.div 
+          className="absolute right-[30%] top-[45%] w-24 h-24 rounded-full border border-blue-500/30 flex items-center justify-center"
+          animate={{ scale: [1, 1.15, 1], opacity: [0.2, 0.6, 0.2] }}
+          transition={{ duration: 4, ease: "easeInOut", repeat: Infinity }}
+        >
+          <div className="w-2 h-2 bg-blue-400 rounded-full shadow-[0_0_15px_rgba(59,130,246,1)]" />
+          <div className="absolute w-full h-[1px] bg-blue-500/20" />
+          <div className="absolute h-full w-[1px] bg-blue-500/20" />
+          
+          <div className="absolute inset-0 border border-blue-400/20 scale-125" />
+          <div className="absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 border-blue-400" />
+          <div className="absolute -top-1 -right-1 w-3 h-3 border-t-2 border-r-2 border-blue-400" />
+          <div className="absolute -bottom-1 -left-1 w-3 h-3 border-b-2 border-l-2 border-blue-400" />
+          <div className="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-blue-400" />
+        </motion.div>
+        
+        {/* Secondary Coordinate Ping */}
+        <motion.div 
+          className="absolute right-[50%] top-[65%] w-12 h-12 rounded-full border border-blue-400/20 flex items-center justify-center"
+          animate={{ scale: [0.8, 1.3, 0.8], opacity: [0.1, 0.5, 0.1] }}
+          transition={{ duration: 3.5, ease: "easeInOut", repeat: Infinity, delay: 1 }}
+        >
+          <div className="w-1.5 h-1.5 bg-blue-300/80 rounded-full" />
+        </motion.div>
+      </div>
+      
+      <div className="relative w-full h-[85%] max-w-2xl opacity-100 z-10 transition-transform duration-1000 scale-100 hover:scale-105">
+        <Image 
+          src="/azure-mockup.png" 
+          alt="Azure Smiles Platform" 
+          fill 
+          className="object-contain object-right"
+          priority
         />
       </div>
     </div>

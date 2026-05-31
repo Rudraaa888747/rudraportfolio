@@ -44,11 +44,17 @@ export default function Footer() {
       </motion.div>
 
       {/* Footer Bottom Bar */}
-      <div className="absolute bottom-0 left-0 w-full p-6 md:p-12 flex justify-between items-center border-t border-white/[0.05] text-[10px] tracking-widest uppercase text-[#555] font-mono">
-        <p>&copy; {new Date().getFullYear()} Rudra Chokshi</p>
-        <div className="flex items-center gap-4">
-          <div className="w-1.5 h-1.5 rounded-full bg-[#d0d0d0] animate-pulse" />
-          <p>System V10.0 Online</p>
+      <div className="absolute bottom-0 left-0 w-full p-6 md:p-12 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0 border-t border-white/[0.05] text-[10px] tracking-widest uppercase text-[#555] font-mono">
+        <p className="md:w-1/3 text-center md:text-left">&copy; {new Date().getFullYear()} ALL RIGHTS RESERVED</p>
+        
+        <div className="md:w-1/3 flex justify-center items-center gap-2 group">
+          <span className="text-[#444] transition-colors duration-300 group-hover:text-[#666]">MADE BY</span>
+          <span className="text-[#888] font-semibold tracking-[0.4em] transition-all duration-500 group-hover:text-white group-hover:tracking-[0.5em] group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">RUDRA CHOKSHI</span>
+        </div>
+
+        <div className="md:w-1/3 flex justify-center md:justify-end items-center gap-4">
+          <div className="w-1.5 h-1.5 rounded-full bg-cyan-500 shadow-[0_0_10px_rgba(34,211,238,0.8)] animate-pulse" />
+          <p className="text-[#666]">System V10.0 Online</p>
         </div>
       </div>
     </footer>
