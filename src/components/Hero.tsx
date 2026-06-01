@@ -93,7 +93,7 @@ export default function Hero() {
           className="mt-12 flex items-center justify-center pointer-events-auto"
         >
           <a 
-            href="/Rudra Chokshi Resume.pdf" 
+            href="/rudra_chokshi_resume.pdf" 
             target="_blank" 
             className="hover-target px-8 py-4 border border-white/[0.1] bg-white/[0.02] transition-all duration-500 overflow-hidden group flex items-center gap-3 rounded-md relative hover:bg-white/[0.04] hover:backdrop-blur-md hover:border-white/[0.2] hover:shadow-[0_0_25px_rgba(255,255,255,0.08)]"
           >

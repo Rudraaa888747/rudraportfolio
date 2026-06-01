@@ -349,7 +349,7 @@ function SwitchEnvironment() {
 
       <div className="relative w-full h-[85%] max-w-2xl opacity-100 z-10 transition-transform duration-1000 scale-100 hover:scale-105">
         <Image 
-          src="/switch-mockup.jpg" 
+          src="/switch-mockup.webp" 
           alt="SWITCH Architecture" 
           fill 
           className="object-contain object-right"
@@ -404,7 +404,7 @@ function TravelEnvironment() {
       
       <div className="relative w-full h-[85%] max-w-2xl opacity-100 z-10 transition-transform duration-1000 scale-100 hover:scale-105">
         <Image 
-          src="/travel-mockup.jpg" 
+          src="/travel-mockup.webp" 
           alt="TRAVEL GUIDE Platform" 
           fill 
           className="object-contain object-right"
@@ -459,7 +459,7 @@ function DentalEnvironment() {
       
       <div className="relative w-full h-[85%] max-w-2xl opacity-100 z-10 transition-transform duration-1000 scale-100 hover:scale-105">
         <Image 
-          src="/azure-mockup.png" 
+          src="/azure-mockup.webp" 
           alt="Azure Smiles Platform" 
           fill 
           className="object-contain object-right"
