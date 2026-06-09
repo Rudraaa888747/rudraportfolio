@@ -6,7 +6,9 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 
-gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const TERMINAL_LINES = [
   {
@@ -16,7 +18,7 @@ const TERMINAL_LINES = [
   {
     type: "interactive",
     label: "STATUS",
-    value: "MSc IT @ GLS University | 2023 — 2028",
+    value: "MSc IT @ GLS University | 2023 - 2028",
     details: "Completed my Bachelor's degree and currently pursuing a Master of Science in Information Technology. Focusing on advanced software engineering principles, scalable data architectures, and AI integration."
   },
   {
@@ -57,7 +59,7 @@ export default function Philosophy() {
 
   useEffect(() => {
     if (!isInView) return;
-    
+
     let current = 0;
     const interval = setInterval(() => {
       if (current < TERMINAL_LINES.length) {
@@ -67,16 +69,18 @@ export default function Philosophy() {
         clearInterval(interval);
       }
     }, 400);
-    
+
     return () => clearInterval(interval);
   }, [isInView]);
+
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
   useGSAP(() => {
     if (!container.current) return;
     const elements = gsap.utils.toArray(".reveal-line");
 
-    gsap.fromTo(elements, 
-      { opacity: 0, y: 40, filter: "blur(10px)" },
+    gsap.fromTo(elements,
+      { opacity: 0, y: 40, filter: isMobile ? "none" : "blur(10px)" },
       {
         opacity: 1,
         y: 0,
@@ -94,38 +98,38 @@ export default function Philosophy() {
   }, { scope: container });
 
   return (
-    <section ref={container} id="about" className="min-h-screen w-full flex items-center justify-center py-32 px-6 md:px-12 relative z-10 bg-black">
-      <div className="max-w-5xl mx-auto flex flex-col gap-16 md:gap-24 w-full">
-        
+    <section ref={container} id="about" className="min-h-screen w-full flex items-center justify-center py-10 md:py-32 px-6 md:px-12 relative z-10 bg-black scroll-mt-20">
+      <div className="max-w-5xl mx-auto flex flex-col gap-12 md:gap-24 w-full">
+
         {/* Core Philosophy */}
-        <div className="flex flex-col gap-6">
-          <div className="reveal-line font-sans text-sm tracking-[0.2em] text-[#555] uppercase mb-4">
+        <div className="flex flex-col gap-4 md:gap-6">
+          <div className="reveal-line font-sans text-xs md:text-sm tracking-[0.2em] text-[#555] uppercase mb-2 md:mb-4">
             // Operating Philosophy
           </div>
-          <h2 className="reveal-line font-display text-4xl md:text-6xl lg:text-7xl font-light tracking-tight text-[#e0e0e0] leading-[1.1]">
+          <h2 className="reveal-line font-display text-3xl md:text-6xl lg:text-7xl font-light tracking-tight text-[#e0e0e0] leading-[1.1] md:leading-[1.1]">
             I engineer systems that feel <span className="text-white font-medium italic">alive</span>.
           </h2>
-          <h2 className="reveal-line font-display text-4xl md:text-6xl lg:text-7xl font-light tracking-tight text-[#888] leading-[1.1]">
+          <h2 className="reveal-line font-display text-xl md:text-6xl lg:text-7xl font-light tracking-tight text-[#888] leading-[1.2] md:leading-[1.1]">
             Bridging the gap between raw backend architecture and cinematic human-computer interaction.
           </h2>
         </div>
 
         {/* Terminal Summary */}
-        <div ref={terminalRef} className="reveal-line w-full max-w-4xl border border-white/[0.05] bg-white/[0.01] p-6 md:p-8 rounded-sm">
-          <div className="flex gap-2 mb-6 border-b border-white/[0.05] pb-4">
+        <div ref={terminalRef} className="reveal-line w-full max-w-4xl border border-white/[0.05] bg-white/[0.01] p-4 md:p-8 rounded-sm">
+          <div className="flex gap-2 mb-4 md:mb-6 border-b border-white/[0.05] pb-3 md:pb-4">
             <div className="w-2 h-2 rounded-full bg-[#333]" />
             <div className="w-2 h-2 rounded-full bg-[#333]" />
             <div className="w-2 h-2 rounded-full bg-[#333]" />
           </div>
-          
-          <div className="font-mono text-xs md:text-sm text-[#888] flex flex-col gap-1">
+
+          <div className="font-mono text-[10px] md:text-sm text-[#888] flex flex-col gap-1 md:gap-1">
             {TERMINAL_LINES.slice(0, displayedLines).map((line, i) => (
               <TerminalLine key={i} item={line} index={i} />
             ))}
-            
+
             {displayedLines > 0 && displayedLines < TERMINAL_LINES.length && (
-              <motion.div 
-                animate={{ opacity: [1, 0] }} 
+              <motion.div
+                animate={{ opacity: [1, 0] }}
                 transition={{ repeat: Infinity, duration: 0.8 }}
                 className="w-2 h-4 bg-[#888] mt-3"
               />
@@ -143,10 +147,10 @@ function TerminalLine({ item, index }: { item: any, index: number }) {
 
   if (item.type === "header" || item.type === "footer") {
     return (
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, x: -10 }}
         animate={{ opacity: 1, x: 0 }}
-        className={`py-2 ${item.type === "footer" ? "text-[#555] mt-6" : "text-[#888] mb-4"}`}
+        className={`py-2 ${item.type === "footer" ? "text-[#a0a0a0] drop-shadow-[0_0_5px_rgba(255,255,255,0.2)] md:text-[#555] md:drop-shadow-none mt-6" : "text-[#e0e0e0] drop-shadow-[0_0_6px_rgba(255,255,255,0.3)] md:text-[#888] md:drop-shadow-none mb-4"}`}
       >
         {item.text}
       </motion.div>
@@ -154,28 +158,28 @@ function TerminalLine({ item, index }: { item: any, index: number }) {
   }
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, x: -10 }}
       animate={{ opacity: 1, x: 0 }}
       className="group relative cursor-pointer"
       onClick={() => setIsExpanded(!isExpanded)}
     >
       <div className="flex items-start gap-3 py-2 px-3 -mx-3 rounded-md transition-all duration-500 hover:bg-white/[0.02]">
-        
+
         {/* Subtle hover glow indicator */}
         <div className={`mt-[6px] w-[2px] h-[2px] transition-all duration-500 rounded-full ${isExpanded ? 'bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]' : 'bg-[#333] group-hover:bg-[#888]'}`} />
-        
+
         <div className="flex-1">
-          <span className="text-[#a0a0a0] transition-colors duration-300 group-hover:text-white">
+          <span className="text-[#f0f0f0] drop-shadow-[0_0_6px_rgba(255,255,255,0.4)] md:text-[#a0a0a0] md:drop-shadow-none transition-colors duration-300 group-hover:text-white">
             {item.label}:
           </span>
           {" "}
-          <span className="text-[#666] transition-colors duration-300 group-hover:text-[#a0a0a0]">
+          <span className="text-[#c0c0c0] drop-shadow-[0_0_4px_rgba(255,255,255,0.3)] md:text-[#666] md:drop-shadow-none transition-colors duration-300 group-hover:text-[#a0a0a0]">
             {item.value}
           </span>
         </div>
       </div>
-      
+
       <AnimatePresence>
         {isExpanded && (
           <motion.div

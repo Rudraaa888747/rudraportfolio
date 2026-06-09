@@ -66,8 +66,11 @@ export default function Navbar() {
 
         {/* Mobile Hamburger */}
         <button 
-          className={`md:hidden flex flex-col gap-2 p-2 ${isProjectModalOpen ? 'pointer-events-none' : 'pointer-events-auto'}`}
-          onClick={() => setMobileMenuOpen(true)}
+          className={`md:hidden flex flex-col justify-center gap-2 p-4 min-w-[44px] min-h-[44px] -mr-2 ${isProjectModalOpen ? 'pointer-events-none' : 'pointer-events-auto'}`}
+          onClick={() => {
+            setMobileMenuOpen(true);
+            document.body.style.overflow = 'hidden';
+          }}
         >
           <div className="w-8 h-[1px] bg-[#e0e0e0]" />
           <div className="w-8 h-[1px] bg-[#e0e0e0]" />
@@ -92,8 +95,11 @@ export default function Navbar() {
               </div>
               <motion.button 
                 whileTap={{ scale: 0.9 }}
-                className="p-2 text-[#888] hover:text-white font-mono text-[10px] md:text-xs tracking-[0.2em] uppercase transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
+                className="p-4 -mr-2 min-w-[44px] min-h-[44px] text-[#888] hover:text-white font-mono text-[10px] md:text-xs tracking-[0.2em] uppercase transition-colors"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  document.body.style.overflow = '';
+                }}
               >
                 [ CLOSE ]
               </motion.button>
@@ -108,7 +114,10 @@ export default function Navbar() {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 whileTap={{ scale: 0.98, x: 10 }}
-                onClick={() => scrollTo('work')} 
+                onClick={() => {
+                  scrollTo('work');
+                  document.body.style.overflow = '';
+                }} 
                 className="font-display text-5xl md:text-7xl text-white tracking-widest uppercase hover:text-cyan-400 transition-all text-left flex flex-col items-start group"
               >
                 <span className="font-mono text-[8px] md:text-[10px] text-[#555] group-hover:text-cyan-400/50 tracking-widest mb-1 transition-colors">DIR // 01</span>
@@ -120,7 +129,10 @@ export default function Navbar() {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 whileTap={{ scale: 0.98, x: 10 }}
-                onClick={() => scrollTo('about')} 
+                onClick={() => {
+                  scrollTo('about');
+                  document.body.style.overflow = '';
+                }} 
                 className="font-display text-5xl md:text-7xl text-white tracking-widest uppercase hover:text-cyan-400 transition-all text-left flex flex-col items-start group"
               >
                 <span className="font-mono text-[8px] md:text-[10px] text-[#555] group-hover:text-cyan-400/50 tracking-widest mb-1 transition-colors">DIR // 02</span>
@@ -132,7 +144,10 @@ export default function Navbar() {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.3, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 whileTap={{ scale: 0.98, x: 10 }}
-                onClick={() => scrollTo('contact')} 
+                onClick={() => {
+                  scrollTo('contact');
+                  document.body.style.overflow = '';
+                }} 
                 className="font-display text-5xl md:text-7xl text-white tracking-widest uppercase hover:text-cyan-400 transition-all text-left flex flex-col items-start group"
               >
                 <span className="font-mono text-[8px] md:text-[10px] text-[#555] group-hover:text-cyan-400/50 tracking-widest mb-1 transition-colors">DIR // 03</span>
@@ -149,7 +164,7 @@ export default function Navbar() {
             >
               <motion.a 
                 whileTap={{ scale: 0.95 }}
-                href="/Rudra Chokshi Resume.pdf"
+                href="/rudra_chokshi_resume.pdf"
                 target="_blank"
                 className="font-mono text-[10px] md:text-xs text-cyan-400 tracking-[0.2em] uppercase hover:text-white transition-colors flex items-center gap-2"
               >

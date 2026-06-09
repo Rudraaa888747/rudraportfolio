@@ -7,7 +7,9 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { BrainCircuit, Database, Globe, Cpu, Layout, Server, Zap, Shield } from "lucide-react";
 
-gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const SKILLS = [
   { name: "Artificial Intelligence", icon: BrainCircuit, color: "text-cyan-400" },

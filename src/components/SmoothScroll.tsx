@@ -13,10 +13,22 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       lenisRef.current?.lenis?.raf(time * 1000);
     }
 
+    const handleModalState = (e: any) => {
+      if (lenisRef.current?.lenis) {
+        if (e.detail) {
+          lenisRef.current.lenis.stop();
+        } else {
+          lenisRef.current.lenis.start();
+        }
+      }
+    };
+
     gsap.ticker.add(update);
+    window.addEventListener('projectModalState', handleModalState);
 
     return () => {
       gsap.ticker.remove(update);
+      window.removeEventListener('projectModalState', handleModalState);
     };
   }, []);
 
@@ -28,9 +40,7 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       options={{ 
         lerp: 0.05, 
         duration: 1.5, 
-        smoothWheel: true,
-        touchMultiplier: 2,
-        syncTouch: true
+        smoothWheel: true
       }}
     >
       {children}

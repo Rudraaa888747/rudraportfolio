@@ -4,10 +4,12 @@ import { useState } from "react";
 import Loader from "@/components/Loader";
 import Hero from "@/components/Hero";
 import Philosophy from "@/components/Philosophy";
+import BehindSystem from "@/components/BehindSystem";
 import Architecture from "@/components/Architecture";
 import Credibility from "@/components/Credibility";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
+import Connect from "@/components/Connect";
 import Footer from "@/components/Footer";
 import { AnimatePresence } from "framer-motion";
 
@@ -23,10 +25,12 @@ export default function Home() {
       <div className={loading ? "fixed inset-0 overflow-hidden pointer-events-none opacity-0" : "opacity-100 transition-opacity duration-1000 delay-500"}>
         <Hero />
         <Philosophy />
+        <BehindSystem />
         <Architecture />
         <Credibility />
         <Projects />
         <Contact />
+        <Connect />
         <Footer />
       </div>
     </main>

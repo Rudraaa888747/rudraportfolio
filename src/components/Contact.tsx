@@ -13,7 +13,7 @@ export default function Contact() {
   const [focusedInput, setFocusedInput] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  
+
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [errors, setErrors] = useState({ name: "", email: "", message: "" });
 
@@ -49,9 +49,9 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
-    
+
     setIsSubmitting(true);
-    
+
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -80,29 +80,29 @@ export default function Contact() {
   };
 
   return (
-    <section ref={container} id="contact" className="relative py-32 px-6 md:px-12 w-full bg-black z-20 border-t border-white/[0.05]">
-      <motion.div 
+    <section ref={container} id="contact" className="relative py-16 lg:py-32 px-6 md:px-12 w-full bg-black z-20 border-t border-white/[0.05]">
+      <motion.div
         style={{ opacity, y }}
-        className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-20"
+        className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-16 lg:gap-20"
       >
         {/* Left Side: System Coordinates */}
-        <div className="w-full lg:w-1/3 flex flex-col gap-16">
+        <div className="w-full lg:w-1/3 flex flex-col gap-12 lg:gap-16">
           <div>
-            <h3 className="font-sans text-sm tracking-[0.2em] text-[#555] uppercase mb-8">
+            <h3 className="font-sans text-xs lg:text-sm tracking-[0.2em] text-[#555] uppercase mb-6 lg:mb-8">
               // System Coordinates
             </h3>
             <h2 className="font-display text-4xl font-light tracking-tight text-[#e0e0e0] leading-tight mb-4">
-              Initiate <br/>Communication.
+              Initiate <br />Communication
             </h2>
-            <p className="text-[#888] font-light leading-relaxed max-w-sm">
+            <p className="text-[#888] font-light leading-relaxed max-w-sm text-sm lg:text-base">
               Available for architectural roles, engineering integrations, and visionary system builds.
             </p>
           </div>
 
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-6 lg:gap-8">
             <Coordinate label="EMAIL_PROTOCOL" value="rudrachokshi441@gmail.com" link="mailto:rudrachokshi441@gmail.com" />
             <Coordinate label="CONTACT NOW" value="+91 8511259549" link="tel:+918511259549" />
-            <div className="flex gap-8 pt-4">
+            <div className="flex gap-6 lg:gap-8 pt-2 lg:pt-4">
               <SocialLink label="LINKEDIN" url="https://www.linkedin.com/in/rudra-chokshi-630004374" />
               <SocialLink label="GITHUB" url="https://github.com/Rudraaa888747" />
             </div>
@@ -111,15 +111,15 @@ export default function Contact() {
 
         {/* Right Side: The Interface */}
         <div className="w-full lg:w-1/2">
-          <form onSubmit={handleSubmit} className="vision-glass p-8 md:p-12 rounded-lg border border-white/[0.05] flex flex-col gap-12 relative overflow-hidden group">
+          <form onSubmit={handleSubmit} className="vision-glass p-6 md:p-12 rounded-lg border border-white/[0.05] flex flex-col gap-8 lg:gap-12 relative overflow-hidden group">
             {/* Ambient Background Glow */}
             <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-            
+
             <div className="relative z-10">
-              <Input 
-                id="name" 
-                label="OPERATOR_NAME" 
-                type="text" 
+              <Input
+                id="name"
+                label="OPERATOR_NAME"
+                type="text"
                 value={formData.name}
                 error={errors.name}
                 onChange={(e) => {
@@ -131,12 +131,12 @@ export default function Contact() {
                 onBlur={() => setFocusedInput(null)}
               />
             </div>
-            
+
             <div className="relative z-10">
-              <Input 
-                id="email" 
-                label="RETURN_ADDRESS" 
-                type="email" 
+              <Input
+                id="email"
+                label="RETURN_ADDRESS"
+                type="email"
                 value={formData.email}
                 error={errors.email}
                 onChange={(e) => {
@@ -148,12 +148,12 @@ export default function Contact() {
                 onBlur={() => setFocusedInput(null)}
               />
             </div>
-            
+
             <div className="relative z-10">
-              <Input 
-                id="message" 
-                label="TRANSMISSION_DATA" 
-                type="textarea" 
+              <Input
+                id="message"
+                label="TRANSMISSION_DATA"
+                type="textarea"
                 value={formData.message}
                 error={errors.message}
                 onChange={(e) => {
@@ -166,7 +166,7 @@ export default function Contact() {
               />
             </div>
 
-            <button 
+            <button
               type="submit"
               disabled={isSubmitting || isSuccess}
               suppressHydrationWarning
@@ -204,24 +204,23 @@ function SocialLink({ label, url }: { label: string, url: string }) {
   );
 }
 
-function Input({ 
-  id, label, type, value, error, focused, onChange, onFocus, onBlur 
-}: { 
-  id: string, label: string, type: string, value: string, error?: string, focused: boolean, onChange: (e: any) => void, onFocus: () => void, onBlur: () => void 
+function Input({
+  id, label, type, value, error, focused, onChange, onFocus, onBlur
+}: {
+  id: string, label: string, type: string, value: string, error?: string, focused: boolean, onChange: (e: any) => void, onFocus: () => void, onBlur: () => void
 }) {
   return (
     <div className="relative w-full">
-      <label 
-        htmlFor={id} 
-        className={`absolute left-0 font-mono text-[10px] uppercase tracking-[0.2em] transition-all duration-300 pointer-events-none ${
-          focused || value.length > 0 
-            ? "-top-5 text-[#888]" 
-            : "top-2 text-[#555]"
-        }`}
+      <label
+        htmlFor={id}
+        className={`absolute left-0 font-mono text-[10px] uppercase tracking-[0.2em] transition-all duration-300 pointer-events-none ${focused || value.length > 0
+          ? "-top-5 text-[#888]"
+          : "top-2 text-[#555]"
+          }`}
       >
         {label}
       </label>
-      
+
       {type === "textarea" ? (
         <textarea
           id={id}
@@ -245,10 +244,10 @@ function Input({
           className={`w-full bg-transparent border-b py-2 text-[#e0e0e0] font-sans text-lg focus:outline-none transition-colors ${error ? 'border-red-500/50' : 'border-white/[0.1] focus:border-transparent'}`}
         />
       )}
-      
+
       {/* Animated Focus Line (GPU Accelerated) */}
       <div className={`absolute bottom-0 left-0 w-full h-[1px] ${error ? 'bg-red-500/20' : 'bg-white/[0.1]'}`}>
-        <motion.div 
+        <motion.div
           className={`h-full w-full origin-center transform-gpu ${error ? 'bg-red-500' : 'bg-gradient-to-r from-[#888] to-[#e0e0e0]'}`}
           initial={{ scaleX: 0 }}
           animate={{ scaleX: focused ? 1 : 0 }}
