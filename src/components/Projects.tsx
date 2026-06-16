@@ -83,7 +83,7 @@ const PROJECTS = [
     tech: ["React 19", "Node.js", "MongoDB", "JWT Auth", "AI Integration"],
     number: "03",
     type: "dental",
-    liveLink: "https://dental-clinic-liard-seven.vercel.app",
+    liveLink: "https://dental-clinic-2ujz.onrender.com",
     githubLink: "https://github.com/Rudraaa888747/Dental-Clinic"
   }
 ];
