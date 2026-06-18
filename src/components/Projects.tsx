@@ -85,6 +85,31 @@ const PROJECTS = [
     type: "dental",
     liveLink: "https://dental-clinic-2ujz.onrender.com",
     githubLink: "https://github.com/Rudraaa888747/Dental-Clinic"
+  },
+  {
+    title: "FOODFLOW",
+    subtitle: "Full-Stack Food Delivery Platform",
+    overview: "A state-of-the-art web application engineered to bridge the gap between hungry customers, busy restaurants, and platform administrators. It provides a flawlessly synchronized ecosystem where every action is updated in real-time.",
+    problem: "Food delivery platforms often suffer from latency, disconnected portals, and manual refreshing, leading to missed orders, delayed deliveries, and a fragmented user experience.",
+    solution: "Engineered a fully synchronized ecosystem using Supabase Realtime and PostgreSQL WebSockets. From placing an order to assigning a delivery driver, every portal updates instantly in milliseconds without manual refreshing.",
+    features: [
+      "Frictionless Customer Portal with Live Tracking",
+      "Dedicated Restaurant OS with Optimistic UI",
+      "Admin Command Center for Platform Metrics",
+      "Integrated Wallet & Table Booking System",
+      "Zero-Latency Realtime Cross-Device Sync"
+    ],
+    highlights: [
+      "Powered by Supabase PostgreSQL WebSockets for instant data propagation across clients.",
+      "Immersive UI with Framer Motion spring-physics animations and layout transitions.",
+      "Lightweight, persistent client-side state managed via Zustand, eliminating Redux boilerplate."
+    ],
+    impact: "Delivered a native-like ordering experience and a sleek operating system for restaurants, ensuring perfect synchronization and zero friction in the entire order-to-delivery pipeline.",
+    tech: ["React", "Vite", "Tailwind CSS", "Zustand", "Supabase", "Framer Motion"],
+    number: "04",
+    type: "foodflow",
+    liveLink: "https://foodflow-sepia.vercel.app",
+    githubLink: "https://github.com/Rudraaa888747/FoodFlow"
   }
 ];
 
@@ -246,6 +271,8 @@ function EditorialProject({ project, onOpenCaseStudy, index }: { project: typeof
               <SwitchEnvironment />
             ) : project.type === "travel" ? (
               <TravelEnvironment />
+            ) : project.type === "foodflow" ? (
+              <FoodFlowEnvironment />
             ) : (
               <DentalEnvironment />
             )}
@@ -439,6 +466,7 @@ function SwitchEnvironment() {
           src="/switch-mockup.webp"
           alt="SWITCH Architecture"
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-contain md:object-right"
           priority
         />
@@ -466,6 +494,7 @@ function TravelEnvironment() {
           src="/travel-mockup.webp"
           alt="TRAVEL GUIDE Platform"
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-contain md:object-right"
         />
       </div>
@@ -492,6 +521,35 @@ function DentalEnvironment() {
           src="/azure-mockup.webp"
           alt="Azure Smiles Platform"
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-contain md:object-right"
+          priority
+        />
+      </div>
+    </div>
+  );
+}
+
+function FoodFlowEnvironment() {
+  return (
+    <div className="relative w-full h-full flex items-center justify-center lg:justify-end p-4 md:p-12 lg:pr-24">
+      <div className="absolute right-[20%] top-[40%] w-[200px] md:w-[400px] h-[200px] md:h-[400px] bg-orange-500/10 blur-[80px] md:blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute right-[10%] bottom-[30%] w-[150px] md:w-[300px] h-[150px] md:h-[300px] bg-red-500/10 blur-[60px] md:blur-[100px] rounded-full pointer-events-none" />
+
+      <div className="hidden md:block absolute inset-0 z-20 opacity-40 mix-blend-screen overflow-hidden pointer-events-none">
+        <motion.div
+          className="w-full h-16 md:h-32 bg-gradient-to-b from-transparent via-orange-500/10 to-orange-400/20 border-b border-orange-400/50 absolute left-0 top-0 shadow-[0_4px_30px_rgba(249,115,22,0.15)]"
+          animate={{ y: ["-20vh", "120vh"] }}
+          transition={{ duration: 6, ease: "linear", repeat: Infinity }}
+        />
+      </div>
+
+      <div className="relative w-full h-[80%] md:h-[85%] max-w-2xl opacity-100 z-10 transition-transform duration-1000 scale-100 hover:scale-105">
+        <Image
+          src="/foodflow-final.png"
+          alt="FoodFlow Platform"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-contain md:object-right"
           priority
         />
